@@ -2,6 +2,8 @@
 
 var services = angular.module('weatherApp.weatherData', ['ngResource']);
 
+
+//currentWeatherAppData
 services.factory('currentWeatherAppData', function($resource, $q, BASEURL){
 	
 	var resource = $resource(BASEURL + 'weather?q=:city&units=metric', {city:'@city'});
@@ -21,9 +23,9 @@ services.factory('currentWeatherAppData', function($resource, $q, BASEURL){
 			}
 			
 		};
-
 });
 
+//sixteenDayWeatherAppData
 services.factory('sixteenDayWeatherAppData', function($resource, $q, BASEURL){
 
 	var resource = $resource(BASEURL + 'forecast/daily?q=:city&mode=json&units=metric&cnt=16', {city:'@city'});
@@ -43,9 +45,10 @@ services.factory('sixteenDayWeatherAppData', function($resource, $q, BASEURL){
 			}
 			
 		};
-
 });
 
+
+//currentWeatherbyCoordAppData
 services.factory('currentWeatherbyCoordAppData', function($resource, $q, BASEURL){
 	
 	var resource = $resource(BASEURL + 'weather?lat=:lat&lon=:lon&units=metric');
