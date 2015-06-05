@@ -1,0 +1,32 @@
+<ion-view view-title="Weather by Current Coordinates" id="currentWeatherbyCity">
+    <ion-content>
+        <div class="list card" ng-switch="weatherData.cod">
+            <div ng-switch-when="200">
+                <div class="centered">
+                    <h2>{{weatherData.name}}</h2>
+                </div>
+                <div class="item item-image">
+                    <img src="http://openweathermap.org/img/w/{{weatherIcon}}.png">
+                </div>
+                <div class="centered">
+                    <h2>{{weatherData.main.temp | number:1}} &#8451</h2>
+                    
+                    <h4>{{weatherDescription}}</h4>
+                    
+                    <p>Min: {{weatherData.main.temp_min | number:1}} &#8451</p>
+                    <p>Max: {{weatherData.main.temp_max | number:1}} &#8451</p>
+                    <p>Recorded at: {{weatherDate | date:'dd.MM.yyyy HH:mm'}} </p>
+                </div>
+
+                <div ng-switch-when="404">
+                    <div class="large-4 large-offset-4 columns">
+                        <div data-alert class="alert-box alert round">
+                            Error: {{city}} not found
+                            <a href="#" class="close">&times;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

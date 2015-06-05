@@ -1,0 +1,13 @@
+/* Empty. Add your own CSS if you like */
+
+.centered{
+    text-align: center !important;
+}
+
+#currentWeatherbyCity .card{
+    box-shadow: none !important;
+}
+
+#currentWeatherbyCity .item{
+    border-width: 0px !important;
+}

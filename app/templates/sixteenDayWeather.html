@@ -1,0 +1,46 @@
+<ion-view view-title="Sixteen Day Weather by City">
+    <ion-content>
+        <form name="searchForm">
+            <div class="list">
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="text" ng-model="city" placeholder=" Enter city" required/>
+                    </label>
+                    <button class="button button-small" ng-click="searchWeatherByCity(city)" ng-disabled="searchForm.$invalid">
+                        <i class="fa fa-search-plus"></i> Search
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="list" ng-switch="cod">
+            <div ng-switch-when="200">
+                <div class="centered">
+                    <h2>{{weatherData.name}}</h2>
+                </div>
+                <div ng-repeat="data in weatherData">
+                    <div class="item item-thumbnail-left">
+                        <img src="http://openweathermap.org/img/w/{{data.weather[0].icon}}.png">
+
+                        <h1>{{data.temp.day  | number:1}} &#8451</h1>
+                        <p>--------------------</p>
+                        <p>Min: {{data.temp.min | number:1}} &#8451</p>
+                        <p>Max: {{data.temp.max | number:1}} &#8451</p>
+                        <p>Morning: {{data.temp.morn | number:1}} &#8451</p>
+                        <p>Day: {{data.temp.day | number:1}} &#8451</p>
+                        <p>Evening: {{data.temp.eve | number:1}} &#8451</p>
+                        <p>Night: {{data.temp.night | number:1}} &#8451</p>
+                        <p>--------------------</p>
+                        <p>Humidity: {{data.humidity}} %</p>
+                        <h3>{{data.weather[0].description}}</h3>
+                        <p>--------------------</p>
+                        <h3>{{data.dt * 1000 | date:'dd.MM.yyyy'}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
